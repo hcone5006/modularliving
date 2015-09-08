@@ -1,0 +1,87 @@
+<div class="contact">
+
+	<div class="banner">
+
+		<h2>High quality home living solutions to suit your requirements</h2>
+
+	</div>
+
+	<h1 class="page-title">{{ page.title }}</h1>
+
+	<div class="rte">
+		
+	  	{{ page.content }}
+
+		<div>
+
+			<div class="half-width">
+
+		  	<h3>order your home</h3>
+
+		  	<p>Please complete the form with details of your situation so we can assess your order. The more information you can provide, the more we’ll be able to tailor our services to suit you. We look forward to working with you!</p>
+
+
+		  	<h4>modular living contact details</h4>
+
+		  	<ul>
+		  		<li>Address of business goes here</li>
+		  		<li>Area of business</li>
+		  		<li>Postcode</li>
+		  	</ul>
+
+		  	<ul>
+		  		<li>E. enquiry@modularliving.co.nz</li>
+		  		<li>P. (09)234 5678</li>
+		  	</ul>
+
+		  	<h4>modular living factory</h4>
+
+		  	<ul>
+		  		<li>Address of factory goes here</li>
+		  		<li>Area of factory</li>
+		  		<li>Postcode</li>
+		  	</ul>
+
+		</div>
+
+		<div class="contact-form-wrapper half-width">
+			
+
+			{% form 'contact' %}
+
+			{% if form.posted_successfully? %}
+			      <p class="success-message">{{ 'contact.success' | t }}</p>
+			{% endif %}
+
+			{% if form.errors %}
+			      <p class="error-message">{{ 'contact.error' | t }}</p>
+			{% endif %}
+
+		    {% unless form.posted_successfully? %}
+		    <div class="input-wrapper">
+			    <label>{{ 'general.name' | t }}</label>
+		        <input type="text" placeholder="{{ 'general.name_placeholder' | t }}" value="" name="contact[name]" class="{% if form.errors contains "author" %}error{% endif %}">
+			</div>
+
+	    	<div class="input-wrapper">
+			    <label>{{ 'general.email' | t }}</label>
+			    <input type="text" placeholder="{{ 'general.email_placeholder' | t }}" value="" name="contact[email]" class="{% if form.errors contains "email" %}error{% endif %}">
+	    	</div>
+
+			<div class="input-wrapper">
+		        <label>{{ 'general.message' | t }}</label>
+		        <textarea name="contact[comments]" rows="6" class="{% if form.errors contains "body" %}error{% endif %}"></textarea>
+			</div>
+
+		    <div class="input-wrapper">
+			    <input type="submit" value="{{ 'general.submit' | t }}">
+			</div>
+		    {% endunless %}
+
+			{% endform %}
+			</div>
+
+		</div>
+	</div>
+
+</div>
